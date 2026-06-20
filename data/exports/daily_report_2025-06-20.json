@@ -1,0 +1,112 @@
+{
+  "report_date": "2025-06-20",
+  "fleet_summary": {
+    "北京一队": {
+      "vehicle_count": 1,
+      "total_fuel": 85.0,
+      "total_power": 73.5,
+      "fuel_saving": 3.75,
+      "risk_count": 1,
+      "trip_count": 1
+    },
+    "北京二队": {
+      "vehicle_count": 1,
+      "total_fuel": 110.0,
+      "total_power": 91.0,
+      "fuel_saving": 6.25,
+      "risk_count": 0,
+      "trip_count": 1
+    },
+    "上海一队": {
+      "vehicle_count": 1,
+      "total_fuel": 115.0,
+      "total_power": 111.0,
+      "fuel_saving": 7.5,
+      "risk_count": 1,
+      "trip_count": 1
+    },
+    "深圳一队": {
+      "vehicle_count": 1,
+      "total_fuel": 95.0,
+      "total_power": 0.0,
+      "fuel_saving": 1.0,
+      "risk_count": 4,
+      "trip_count": 1
+    }
+  },
+  "driver_summary": {
+    "张师傅": {
+      "fleet": "北京一队",
+      "plate": "京A12345",
+      "total_fuel": 85.0,
+      "total_power": 73.5,
+      "fuel_saving": 3.75,
+      "risk_count": 1
+    },
+    "李师傅": {
+      "fleet": "北京二队",
+      "plate": "京B67890",
+      "total_fuel": 110.0,
+      "total_power": 91.0,
+      "fuel_saving": 6.25,
+      "risk_count": 0
+    },
+    "王师傅": {
+      "fleet": "上海一队",
+      "plate": "沪C11111",
+      "total_fuel": 115.0,
+      "total_power": 111.0,
+      "fuel_saving": 7.5,
+      "risk_count": 1
+    },
+    "赵师傅": {
+      "fleet": "深圳一队",
+      "plate": "粤D22222",
+      "total_fuel": 95.0,
+      "total_power": 0.0,
+      "fuel_saving": 1.0,
+      "risk_count": 4
+    }
+  },
+  "route_summary": {
+    "北京-天津-北京": {
+      "trip_count": 1,
+      "vehicle_count": 1,
+      "total_distance": 240.0,
+      "total_fuel": 85.0,
+      "avg_fuel_per_100km": 35.42,
+      "fuel_saving": 7.5,
+      "risk_count": 0
+    },
+    "北京-石家庄-北京": {
+      "trip_count": 1,
+      "vehicle_count": 1,
+      "total_distance": 560.0,
+      "total_fuel": 110.0,
+      "avg_fuel_per_100km": 19.64,
+      "fuel_saving": 2.5,
+      "risk_count": 0
+    },
+    "上海-杭州-上海": {
+      "trip_count": 1,
+      "vehicle_count": 1,
+      "total_distance": 360.0,
+      "total_fuel": 115.0,
+      "avg_fuel_per_100km": 31.94,
+      "fuel_saving": 7.5,
+      "risk_count": 0
+    },
+    "深圳-广州-深圳": {
+      "trip_count": 1,
+      "vehicle_count": 1,
+      "total_distance": 300.0,
+      "total_fuel": 95.0,
+      "avg_fuel_per_100km": 31.67,
+      "fuel_saving": 0.0,
+      "risk_count": 0
+    }
+  },
+  "anomalies_count": 15,
+  "total_fuel_saving": 18.5,
+  "total_risk_count": 6
+}
