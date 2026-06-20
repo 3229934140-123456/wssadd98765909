@@ -3,34 +3,34 @@
   "fleet_summary": {
     "北京一队": {
       "vehicle_count": 1,
-      "total_fuel": 85.0,
-      "total_power": 73.5,
-      "fuel_saving": 10.0,
+      "total_fuel": 132.0,
+      "total_power": 115.0,
+      "fuel_saving": 7.92,
       "risk_count": 1,
-      "trip_count": 1
-    },
-    "北京二队": {
-      "vehicle_count": 1,
-      "total_fuel": 110.0,
-      "total_power": 91.0,
-      "fuel_saving": 6.25,
-      "risk_count": 0,
-      "trip_count": 1
+      "trip_count": 2
     },
     "上海一队": {
       "vehicle_count": 1,
       "total_fuel": 115.0,
-      "total_power": 111.0,
-      "fuel_saving": 11.25,
+      "total_power": 93.0,
+      "fuel_saving": 7.92,
       "risk_count": 1,
       "trip_count": 1
     },
     "深圳一队": {
       "vehicle_count": 1,
       "total_fuel": 95.0,
-      "total_power": 0.0,
-      "fuel_saving": 1.0,
-      "risk_count": 4,
+      "total_power": 68.0,
+      "fuel_saving": 7.09,
+      "risk_count": 2,
+      "trip_count": 1
+    },
+    "成都一队": {
+      "vehicle_count": 1,
+      "total_fuel": 60.0,
+      "total_power": 62.0,
+      "fuel_saving": 0.0,
+      "risk_count": 0,
       "trip_count": 1
     }
   },
@@ -38,123 +38,106 @@
     "张师傅": {
       "fleet": "北京一队",
       "plate": "京A12345",
-      "total_fuel": 85.0,
-      "total_power": 73.5,
-      "fuel_saving": 10.0,
+      "total_fuel": 132.0,
+      "total_power": 115.0,
+      "fuel_saving": 7.92,
       "risk_count": 1
-    },
-    "李师傅": {
-      "fleet": "北京二队",
-      "plate": "京B67890",
-      "total_fuel": 110.0,
-      "total_power": 91.0,
-      "fuel_saving": 6.25,
-      "risk_count": 0
     },
     "王师傅": {
       "fleet": "上海一队",
       "plate": "沪C11111",
       "total_fuel": 115.0,
-      "total_power": 111.0,
-      "fuel_saving": 11.25,
+      "total_power": 93.0,
+      "fuel_saving": 7.92,
       "risk_count": 1
     },
     "赵师傅": {
       "fleet": "深圳一队",
       "plate": "粤D22222",
       "total_fuel": 95.0,
-      "total_power": 0.0,
-      "fuel_saving": 1.0,
-      "risk_count": 4
+      "total_power": 68.0,
+      "fuel_saving": 7.09,
+      "risk_count": 2
+    },
+    "刘师傅": {
+      "fleet": "成都一队",
+      "plate": "川E55555",
+      "total_fuel": 60.0,
+      "total_power": 62.0,
+      "fuel_saving": 0.0,
+      "risk_count": 0
     }
   },
   "route_summary": {
-    "北京-天津-北京": {
+    "北京-天津": {
       "trip_count": 1,
       "vehicle_count": 1,
       "total_distance": 240.0,
-      "total_fuel": 85.0,
-      "avg_fuel_per_100km": 35.42,
-      "fuel_saving": 10.0,
-      "risk_count": 1,
+      "total_fuel": 70.0,
+      "avg_fuel_per_100km": 29.17,
+      "fuel_saving": 2.5,
+      "risk_count": 0,
       "plates": [
         "京A12345"
       ],
-      "anomaly_count": 5,
+      "anomaly_count": 1,
       "anomaly_details": [
         {
           "type": "装卸等待用油机",
           "plate": "京A12345",
+          "trip_id": "trip_A1",
           "segment": "北京冷库→北京冷库",
           "risk_score": 3,
-          "fuel_saving": 3.75
-        },
+          "fuel_saving": 2.5
+        }
+      ]
+    },
+    "北京-石家庄": {
+      "trip_count": 1,
+      "vehicle_count": 1,
+      "total_distance": 280.0,
+      "total_fuel": 62.0,
+      "avg_fuel_per_100km": 22.14,
+      "fuel_saving": 5.42,
+      "risk_count": 1,
+      "plates": [
+        "京A12345"
+      ],
+      "anomaly_count": 3,
+      "anomaly_details": [
         {
           "type": "装卸等待用油机",
           "plate": "京A12345",
-          "segment": "天津配送中心→天津配送中心",
+          "trip_id": "trip_A2",
+          "segment": "北京冷库→北京冷库",
           "risk_score": 3,
-          "fuel_saving": 3.75
+          "fuel_saving": 2.5
         },
         {
           "type": "装卸等待用油机",
           "plate": "京A12345",
-          "segment": "天津配送中心→天津配送中心",
+          "trip_id": "trip_A2",
+          "segment": "石家庄配送中心→石家庄配送中心",
           "risk_score": 3,
           "fuel_saving": 2.5
         },
         {
           "type": "插电未转电机",
           "plate": "京A12345",
-          "segment": "北京冷库→天津配送中心",
+          "trip_id": "trip_A2",
+          "segment": "北京冷库→石家庄配送中心",
           "risk_score": 8,
-          "fuel_saving": 0.0
-        },
-        {
-          "type": "温度偏离设定",
-          "plate": "京A12345",
-          "segment": "天津配送中心→天津配送中心",
-          "risk_score": 6,
-          "fuel_saving": 0.0
+          "fuel_saving": 0.42
         }
       ]
     },
-    "北京-石家庄-北京": {
-      "trip_count": 1,
-      "vehicle_count": 1,
-      "total_distance": 560.0,
-      "total_fuel": 110.0,
-      "avg_fuel_per_100km": 19.64,
-      "fuel_saving": 6.25,
-      "risk_count": 0,
-      "plates": [
-        "京B67890"
-      ],
-      "anomaly_count": 2,
-      "anomaly_details": [
-        {
-          "type": "装卸等待用油机",
-          "plate": "京B67890",
-          "segment": "北京冷库→北京冷库",
-          "risk_score": 3,
-          "fuel_saving": 3.75
-        },
-        {
-          "type": "装卸等待用油机",
-          "plate": "京B67890",
-          "segment": "石家庄配送中心→石家庄配送中心",
-          "risk_score": 3,
-          "fuel_saving": 2.5
-        }
-      ]
-    },
-    "上海-杭州-上海": {
+    "上海-杭州": {
       "trip_count": 1,
       "vehicle_count": 1,
       "total_distance": 360.0,
       "total_fuel": 115.0,
       "avg_fuel_per_100km": 31.94,
-      "fuel_saving": 11.25,
+      "fuel_saving": 7.92,
       "risk_count": 1,
       "plates": [
         "沪C11111"
@@ -164,6 +147,7 @@
         {
           "type": "装卸等待用油机",
           "plate": "沪C11111",
+          "trip_id": "trip_B1",
           "segment": "上海冷库→上海冷库",
           "risk_score": 3,
           "fuel_saving": 3.75
@@ -171,13 +155,7 @@
         {
           "type": "装卸等待用油机",
           "plate": "沪C11111",
-          "segment": "杭州配送中心→杭州配送中心",
-          "risk_score": 3,
-          "fuel_saving": 3.75
-        },
-        {
-          "type": "装卸等待用油机",
-          "plate": "沪C11111",
+          "trip_id": "trip_B1",
           "segment": "杭州配送中心→杭州配送中心",
           "risk_score": 3,
           "fuel_saving": 3.75
@@ -185,78 +163,92 @@
         {
           "type": "插电未转电机",
           "plate": "沪C11111",
+          "trip_id": "trip_B1",
           "segment": "上海冷库→杭州配送中心",
           "risk_score": 8,
+          "fuel_saving": 0.42
+        },
+        {
+          "type": "温度偏离设定",
+          "plate": "沪C11111",
+          "trip_id": "trip_B1",
+          "segment": "杭州配送中心→杭州配送中心",
+          "risk_score": 6,
           "fuel_saving": 0.0
         },
         {
           "type": "温度偏离设定",
           "plate": "沪C11111",
+          "trip_id": "trip_B1",
           "segment": "杭州配送中心→杭州配送中心",
           "risk_score": 6,
           "fuel_saving": 0.0
         }
       ]
     },
-    "深圳-广州-深圳": {
+    "深圳-广州": {
       "trip_count": 1,
       "vehicle_count": 1,
       "total_distance": 300.0,
       "total_fuel": 95.0,
       "avg_fuel_per_100km": 31.67,
-      "fuel_saving": 1.0,
-      "risk_count": 4,
+      "fuel_saving": 7.09,
+      "risk_count": 2,
       "plates": [
         "粤D22222"
       ],
-      "anomaly_count": 6,
+      "anomaly_count": 4,
       "anomaly_details": [
         {
-          "type": "插电未转电机",
+          "type": "装卸等待用油机",
           "plate": "粤D22222",
+          "trip_id": "trip_C1",
           "segment": "深圳冷库→深圳冷库",
-          "risk_score": 8,
-          "fuel_saving": 0.0
+          "risk_score": 3,
+          "fuel_saving": 2.5
+        },
+        {
+          "type": "装卸等待用油机",
+          "plate": "粤D22222",
+          "trip_id": "trip_C1",
+          "segment": "广州配送中心→广州配送中心",
+          "risk_score": 3,
+          "fuel_saving": 3.75
         },
         {
           "type": "插电未转电机",
           "plate": "粤D22222",
+          "trip_id": "trip_C1",
           "segment": "深圳冷库→深圳冷库",
           "risk_score": 8,
-          "fuel_saving": 0.0
+          "fuel_saving": 0.42
         },
         {
           "type": "插电未转电机",
           "plate": "粤D22222",
+          "trip_id": "trip_C1",
           "segment": "深圳冷库→广州配送中心",
           "risk_score": 8,
-          "fuel_saving": 0.0
-        },
-        {
-          "type": "插电未转电机",
-          "plate": "粤D22222",
-          "segment": "广州配送中心→广州配送中心",
-          "risk_score": 8,
-          "fuel_saving": 0.0
-        },
-        {
-          "type": "插电时点火",
-          "plate": "粤D22222",
-          "segment": "深圳冷库→深圳冷库",
-          "risk_score": 6,
-          "fuel_saving": 0.5
-        },
-        {
-          "type": "插电时点火",
-          "plate": "粤D22222",
-          "segment": "广州配送中心→广州配送中心",
-          "risk_score": 6,
-          "fuel_saving": 0.5
+          "fuel_saving": 0.42
         }
       ]
+    },
+    "成都-绵阳": {
+      "trip_count": 1,
+      "vehicle_count": 1,
+      "total_distance": 260.0,
+      "total_fuel": 60.0,
+      "avg_fuel_per_100km": 23.08,
+      "fuel_saving": 0.0,
+      "risk_count": 0,
+      "plates": [
+        "川E55555"
+      ],
+      "anomaly_count": 0,
+      "anomaly_details": []
     }
   },
-  "anomalies_count": 18,
-  "total_fuel_saving": 28.5,
-  "total_risk_count": 6
+  "anomalies_count": 13,
+  "total_fuel_saving": 22.93,
+  "total_risk_count": 4
 }

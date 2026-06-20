@@ -229,6 +229,7 @@ class Anomaly:
     details: Dict[str, Any] = field(default_factory=dict)
     fuel_saving_potential: float = 0.0
     risk_score: int = 0
+    trip_id: str = ""
 
     def to_dict(self) -> Dict[str, Any]:
         return {
@@ -237,6 +238,7 @@ class Anomaly:
             "description": self.description,
             "timestamp": self.timestamp.strftime("%Y-%m-%d %H:%M:%S") if self.timestamp else None,
             "vehicle_plate": self.vehicle.plate if self.vehicle else None,
+            "trip_id": self.trip_id,
             "segment": self.segment.to_dict() if self.segment else None,
             "details": self.details,
             "fuel_saving_potential": self.fuel_saving_potential,

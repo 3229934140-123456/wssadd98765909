@@ -28,6 +28,7 @@ class AnomalyDetector:
         for anomaly in anomalies:
             if anomaly.segment is None and anomaly.timestamp:
                 anomaly.segment = self._find_segment_for_timestamp(trip, anomaly.timestamp)
+            anomaly.trip_id = trip.trip_id
 
         return anomalies
 
@@ -71,15 +72,13 @@ class AnomalyDetector:
                 continue
 
             cold_modes_in_range = self._get_cold_modes_in_range(trip, segment.start_time, segment.end_time)
-            charge_statuses = self._get_charge_statuses_in_range(trip, segment.start_time, segment.end_time)
 
-            is_plugged = any(cs.status == ChargeStatus.PLUGGED for cs in charge_statuses)
             has_diesel_in_range = any(cm.mode == ColdMode.DIESEL for cm in cold_modes_in_range)
 
             mode_at_start = self._get_cold_mode_at_time(trip, segment.start_time)
             inherited_diesel = (mode_at_start == ColdMode.DIESEL and not cold_modes_in_range)
 
-            if has_diesel_in_range or (inherited_diesel and (is_plugged or segment.phase == OperationPhase.WAITING)):
+            if has_diesel_in_range or inherited_diesel:
                 duration_hours = segment.duration.total_seconds() / 3600
                 fuel_saving = duration_hours * self.diesel_rate_per_hour
 
@@ -101,7 +100,6 @@ class AnomalyDetector:
                     details={
                         "phase": segment.phase.value,
                         "duration_minutes": segment.duration.total_seconds() / 60,
-                        "is_plugged": is_plugged,
                         "start_location": segment.start_location,
                         "end_location": segment.end_location,
                         "inherited_diesel": inherited_diesel
@@ -119,7 +117,7 @@ class AnomalyDetector:
         charge_records = sorted(trip.charge_records, key=lambda x: x.timestamp)
         cold_mode_records = sorted(trip.cold_mode_records, key=lambda x: x.timestamp)
 
-        for i, charge_rec in enumerate(charge_records):
+        for charge_rec in charge_records:
             if charge_rec.status != ChargeStatus.PLUGGED:
                 continue
 
@@ -134,51 +132,55 @@ class AnomalyDetector:
             is_diesel = False
             delay_minutes = 0
             details = {}
-            first_mode_time = None
-            time_diff = 0
+            desc_suffix = ""
 
             if modes_after:
-                first_mode = modes_after[0]
-                if first_mode.mode == ColdMode.DIESEL:
+                first_electric = None
+                first_diesel_after_plug = None
+                for cm in modes_after:
+                    if cm.mode == ColdMode.ELECTRIC and first_electric is None:
+                        first_electric = cm
+                    if cm.mode == ColdMode.DIESEL and first_diesel_after_plug is None:
+                        first_diesel_after_plug = cm
+
+                if first_electric is not None:
+                    switch_minutes = (first_electric.timestamp - plug_time).total_seconds() / 60
+                    if switch_minutes <= self.mode_switch_window:
+                        continue
+
+                if first_diesel_after_plug is not None:
                     is_diesel = True
-                    time_diff = (first_mode.timestamp - plug_time).total_seconds() / 60
+                    time_diff = (first_diesel_after_plug.timestamp - plug_time).total_seconds() / 60
                     if time_diff < 1:
                         delay_minutes = self.mode_switch_window
-                        details_note = f"插电时冷机已为油机状态，{self.mode_switch_window}分钟内未切换"
+                        desc_suffix = "（插电时已为油机状态，容忍时间内未切换至电机）"
                     else:
                         delay_minutes = time_diff
-                        details_note = f"插电后{delay_minutes:.0f}分钟仍为油机状态"
-                    first_mode_time = first_mode.timestamp
+                        desc_suffix = f"（插电后{delay_minutes:.0f}分钟仍为油机状态）"
                     details = {
                         "plug_time": plug_time.strftime("%Y-%m-%d %H:%M:%S"),
-                        "first_mode_after": first_mode.mode.value,
-                        "first_mode_time": first_mode_time.strftime("%Y-%m-%d %H:%M:%S"),
+                        "first_mode_after": first_diesel_after_plug.mode.value,
+                        "first_mode_time": first_diesel_after_plug.timestamp.strftime("%Y-%m-%d %H:%M:%S"),
                         "delay_minutes": delay_minutes,
                         "has_mode_record": True,
-                        "note": details_note
+                        "note": desc_suffix
                     }
             else:
                 current_mode = self._get_cold_mode_at_time(trip, plug_time)
                 if current_mode == ColdMode.DIESEL:
                     is_diesel = True
                     delay_minutes = self.mode_switch_window
+                    desc_suffix = f"（插电后{self.mode_switch_window}分钟内无模式切换记录，当前仍为油机状态）"
                     details = {
                         "plug_time": plug_time.strftime("%Y-%m-%d %H:%M:%S"),
                         "current_mode": "diesel",
                         "delay_minutes": delay_minutes,
                         "has_mode_record": False,
-                        "note": f"插电后{self.mode_switch_window}分钟内无模式切换记录，当前仍为油机状态"
+                        "note": desc_suffix
                     }
 
             if is_diesel:
                 segment = self._find_segment_for_timestamp(trip, plug_time)
-
-                if not modes_after:
-                    desc_suffix = "（无模式切换记录，按当前油机状态判定）"
-                elif time_diff < 1:
-                    desc_suffix = "（插电时已为油机状态）"
-                else:
-                    desc_suffix = ""
 
                 anomaly = Anomaly(
                     anomaly_type="插电未转电机",

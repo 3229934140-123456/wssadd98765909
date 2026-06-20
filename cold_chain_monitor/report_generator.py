@@ -128,13 +128,11 @@ class ReportGenerator:
             "anomaly_details": []
         })
 
-        plate_to_route = {}
-        route_to_trips = defaultdict(list)
+        trip_id_to_route = {}
         for trip in trips:
             route = trip.route
             plate = trip.vehicle.plate
-            plate_to_route[plate] = route
-            route_to_trips[route].append(trip)
+            trip_id_to_route[trip.trip_id] = route
             route_data[route]["trip_count"] += 1
             route_data[route]["total_distance"] += trip.total_distance
             route_data[route]["total_fuel"] += trip.total_fuel_consumption
@@ -143,10 +141,8 @@ class ReportGenerator:
         for anomaly in anomalies:
             route = None
 
-            if anomaly.vehicle:
-                plate = anomaly.vehicle.plate
-                if plate in plate_to_route:
-                    route = plate_to_route[plate]
+            if anomaly.trip_id and anomaly.trip_id in trip_id_to_route:
+                route = trip_id_to_route[anomaly.trip_id]
 
             if route is None and anomaly.segment:
                 for trip in trips:
@@ -171,6 +167,7 @@ class ReportGenerator:
                 route_data[route]["anomaly_details"].append({
                     "type": anomaly.anomaly_type,
                     "plate": anomaly.vehicle.plate if anomaly.vehicle else "未知",
+                    "trip_id": anomaly.trip_id,
                     "segment": f"{anomaly.segment.start_location}→{anomaly.segment.end_location}" if anomaly.segment else "未知",
                     "risk_score": anomaly.risk_score,
                     "fuel_saving": anomaly.fuel_saving_potential

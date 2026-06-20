@@ -1,0 +1,56 @@
+{
+  "trip_id": "trip_B1",
+  "vehicle": {"plate": "沪C11111", "fleet": "上海一队", "driver": "王师傅"},
+  "date": "2025-06-20",
+  "route": "上海-杭州",
+  "segments": [
+    {"start_time": "2025-06-20 04:00:00", "end_time": "2025-06-20 05:30:00", "start_location": "上海冷库", "end_location": "上海冷库", "phase": "loading", "distance": 0},
+    {"start_time": "2025-06-20 05:30:00", "end_time": "2025-06-20 08:00:00", "start_location": "上海冷库", "end_location": "杭州配送中心", "phase": "transport", "distance": 180},
+    {"start_time": "2025-06-20 08:00:00", "end_time": "2025-06-20 09:30:00", "start_location": "杭州配送中心", "end_location": "杭州配送中心", "phase": "waiting", "distance": 0},
+    {"start_time": "2025-06-20 09:30:00", "end_time": "2025-06-20 11:00:00", "start_location": "杭州配送中心", "end_location": "杭州配送中心", "phase": "unloading", "distance": 0},
+    {"start_time": "2025-06-20 11:00:00", "end_time": "2025-06-20 13:30:00", "start_location": "杭州配送中心", "end_location": "上海冷库", "phase": "transport", "distance": 180}
+  ],
+  "temperature_records": [
+    {"timestamp": "2025-06-20 04:00:00", "compartment": "主厢", "temperature": -18.0, "target_temperature": -18.0},
+    {"timestamp": "2025-06-20 05:00:00", "compartment": "主厢", "temperature": -17.9, "target_temperature": -18.0},
+    {"timestamp": "2025-06-20 05:30:00", "compartment": "主厢", "temperature": -18.1, "target_temperature": -18.0},
+    {"timestamp": "2025-06-20 06:30:00", "compartment": "主厢", "temperature": -18.0, "target_temperature": -18.0},
+    {"timestamp": "2025-06-20 07:30:00", "compartment": "主厢", "temperature": -17.8, "target_temperature": -18.0},
+    {"timestamp": "2025-06-20 08:00:00", "compartment": "主厢", "temperature": -18.2, "target_temperature": -18.0},
+    {"timestamp": "2025-06-20 08:30:00", "compartment": "主厢", "temperature": -19.0, "target_temperature": -18.0},
+    {"timestamp": "2025-06-20 09:00:00", "compartment": "主厢", "temperature": -13.5, "target_temperature": -18.0},
+    {"timestamp": "2025-06-20 09:30:00", "compartment": "主厢", "temperature": -14.0, "target_temperature": -18.0},
+    {"timestamp": "2025-06-20 10:00:00", "compartment": "主厢", "temperature": -17.5, "target_temperature": -18.0},
+    {"timestamp": "2025-06-20 11:00:00", "compartment": "主厢", "temperature": -18.0, "target_temperature": -18.0},
+    {"timestamp": "2025-06-20 12:00:00", "compartment": "主厢", "temperature": -17.9, "target_temperature": -18.0},
+    {"timestamp": "2025-06-20 13:30:00", "compartment": "主厢", "temperature": -18.1, "target_temperature": -18.0}
+  ],
+  "fuel_records": [
+    {"timestamp": "2025-06-20 04:00:00", "fuel_level": 90.0, "fuel_consumption": 0.0, "fuel_rate": 0.0},
+    {"timestamp": "2025-06-20 08:00:00", "fuel_level": 70.0, "fuel_consumption": 45.0, "fuel_rate": 12.9},
+    {"timestamp": "2025-06-20 11:00:00", "fuel_level": 58.0, "fuel_consumption": 72.0, "fuel_rate": 9.0},
+    {"timestamp": "2025-06-20 13:30:00", "fuel_level": 42.0, "fuel_consumption": 115.0, "fuel_rate": 17.2}
+  ],
+  "electric_records": [
+    {"timestamp": "2025-06-20 04:00:00", "battery_level": 100.0, "power_consumption": 0.0, "voltage": 0.0, "current": 0.0},
+    {"timestamp": "2025-06-20 08:00:00", "battery_level": 70.0, "power_consumption": 15.0, "voltage": 0.0, "current": 0.0},
+    {"timestamp": "2025-06-20 11:00:00", "battery_level": 55.0, "power_consumption": 28.0, "voltage": 0.0, "current": 0.0},
+    {"timestamp": "2025-06-20 13:30:00", "battery_level": 25.0, "power_consumption": 50.0, "voltage": 0.0, "current": 0.0}
+  ],
+  "cold_mode_records": [
+    {"timestamp": "2025-06-20 04:00:00", "mode": "diesel", "set_point": -18.0},
+    {"timestamp": "2025-06-20 08:30:00", "mode": "electric", "set_point": -22.0},
+    {"timestamp": "2025-06-20 10:00:00", "mode": "diesel", "set_point": -18.0}
+  ],
+  "ignition_records": [
+    {"timestamp": "2025-06-20 04:00:00", "status": "off"},
+    {"timestamp": "2025-06-20 05:30:00", "status": "on"},
+    {"timestamp": "2025-06-20 08:00:00", "status": "off"},
+    {"timestamp": "2025-06-20 11:00:00", "status": "on"},
+    {"timestamp": "2025-06-20 13:30:00", "status": "off"}
+  ],
+  "charge_records": [
+    {"timestamp": "2025-06-20 08:00:00", "status": "plugged", "charge_power": 8.0},
+    {"timestamp": "2025-06-20 11:00:00", "status": "unplugged", "charge_power": 0.0}
+  ]
+}

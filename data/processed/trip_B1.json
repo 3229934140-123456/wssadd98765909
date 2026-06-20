@@ -1,5 +1,5 @@
 {
-  "trip_id": "trip_003",
+  "trip_id": "trip_B1",
   "vehicle": {
     "plate": "沪C11111",
     "fleet": "上海一队",
@@ -8,10 +8,10 @@
     "capacity": 0.0
   },
   "date": "2025-06-20",
-  "route": "上海-杭州-上海",
+  "route": "上海-杭州",
   "total_fuel_consumption": 115.0,
-  "total_power_consumption": 111.0,
-  "total_distance": 360.0,
+  "total_power_consumption": 93.0,
+  "total_distance": 360,
   "segments": [
     {
       "start_time": "2025-06-20 04:00:00",
@@ -19,7 +19,7 @@
       "start_location": "上海冷库",
       "end_location": "上海冷库",
       "phase": "loading",
-      "distance": 0.0,
+      "distance": 0,
       "duration_minutes": 90.0
     },
     {
@@ -28,7 +28,7 @@
       "start_location": "上海冷库",
       "end_location": "杭州配送中心",
       "phase": "transport",
-      "distance": 180.0,
+      "distance": 180,
       "duration_minutes": 150.0
     },
     {
@@ -37,7 +37,7 @@
       "start_location": "杭州配送中心",
       "end_location": "杭州配送中心",
       "phase": "waiting",
-      "distance": 0.0,
+      "distance": 0,
       "duration_minutes": 90.0
     },
     {
@@ -46,7 +46,7 @@
       "start_location": "杭州配送中心",
       "end_location": "杭州配送中心",
       "phase": "unloading",
-      "distance": 0.0,
+      "distance": 0,
       "duration_minutes": 90.0
     },
     {
@@ -55,7 +55,7 @@
       "start_location": "杭州配送中心",
       "end_location": "上海冷库",
       "phase": "transport",
-      "distance": 180.0,
+      "distance": 180,
       "duration_minutes": 150.0
     }
   ],
@@ -66,13 +66,6 @@
       "temperature": -18.0,
       "target_temperature": -18.0,
       "deviation": 0.0
-    },
-    {
-      "timestamp": "2025-06-20 04:30:00",
-      "compartment": "主厢",
-      "temperature": -18.2,
-      "target_temperature": -18.0,
-      "deviation": -0.1999999999999993
     },
     {
       "timestamp": "2025-06-20 05:00:00",
@@ -89,13 +82,6 @@
       "deviation": -0.10000000000000142
     },
     {
-      "timestamp": "2025-06-20 06:00:00",
-      "compartment": "主厢",
-      "temperature": -17.8,
-      "target_temperature": -18.0,
-      "deviation": 0.1999999999999993
-    },
-    {
       "timestamp": "2025-06-20 06:30:00",
       "compartment": "主厢",
       "temperature": -18.0,
@@ -103,60 +89,46 @@
       "deviation": 0.0
     },
     {
-      "timestamp": "2025-06-20 07:00:00",
-      "compartment": "主厢",
-      "temperature": -18.3,
-      "target_temperature": -18.0,
-      "deviation": -0.3000000000000007
-    },
-    {
       "timestamp": "2025-06-20 07:30:00",
       "compartment": "主厢",
-      "temperature": -17.7,
+      "temperature": -17.8,
       "target_temperature": -18.0,
-      "deviation": 0.3000000000000007
+      "deviation": 0.1999999999999993
     },
     {
       "timestamp": "2025-06-20 08:00:00",
       "compartment": "主厢",
-      "temperature": -18.0,
+      "temperature": -18.2,
       "target_temperature": -18.0,
-      "deviation": 0.0
+      "deviation": -0.1999999999999993
     },
     {
       "timestamp": "2025-06-20 08:30:00",
-      "compartment": "主厢",
-      "temperature": -18.5,
-      "target_temperature": -18.0,
-      "deviation": -0.5
-    },
-    {
-      "timestamp": "2025-06-20 09:00:00",
       "compartment": "主厢",
       "temperature": -19.0,
       "target_temperature": -18.0,
       "deviation": -1.0
     },
     {
+      "timestamp": "2025-06-20 09:00:00",
+      "compartment": "主厢",
+      "temperature": -13.5,
+      "target_temperature": -18.0,
+      "deviation": 4.5
+    },
+    {
       "timestamp": "2025-06-20 09:30:00",
       "compartment": "主厢",
-      "temperature": -17.5,
+      "temperature": -14.0,
       "target_temperature": -18.0,
-      "deviation": 0.5
+      "deviation": 4.0
     },
     {
       "timestamp": "2025-06-20 10:00:00",
       "compartment": "主厢",
-      "temperature": -16.0,
+      "temperature": -17.5,
       "target_temperature": -18.0,
-      "deviation": 2.0
-    },
-    {
-      "timestamp": "2025-06-20 10:30:00",
-      "compartment": "主厢",
-      "temperature": -14.5,
-      "target_temperature": -18.0,
-      "deviation": 3.5
+      "deviation": 0.5
     },
     {
       "timestamp": "2025-06-20 11:00:00",
@@ -166,13 +138,6 @@
       "deviation": 0.0
     },
     {
-      "timestamp": "2025-06-20 11:30:00",
-      "compartment": "主厢",
-      "temperature": -18.2,
-      "target_temperature": -18.0,
-      "deviation": -0.1999999999999993
-    },
-    {
       "timestamp": "2025-06-20 12:00:00",
       "compartment": "主厢",
       "temperature": -17.9,
@@ -180,25 +145,11 @@
       "deviation": 0.10000000000000142
     },
     {
-      "timestamp": "2025-06-20 12:30:00",
+      "timestamp": "2025-06-20 13:30:00",
       "compartment": "主厢",
       "temperature": -18.1,
       "target_temperature": -18.0,
       "deviation": -0.10000000000000142
-    },
-    {
-      "timestamp": "2025-06-20 13:00:00",
-      "compartment": "主厢",
-      "temperature": -17.8,
-      "target_temperature": -18.0,
-      "deviation": 0.1999999999999993
-    },
-    {
-      "timestamp": "2025-06-20 13:30:00",
-      "compartment": "主厢",
-      "temperature": -18.0,
-      "target_temperature": -18.0,
-      "deviation": 0.0
     }
   ],
   "fuel_records": [
@@ -209,34 +160,22 @@
       "fuel_rate": 0.0
     },
     {
-      "timestamp": "2025-06-20 05:30:00",
-      "fuel_level": 85.0,
-      "fuel_consumption": 10.0,
-      "fuel_rate": 6.7
-    },
-    {
       "timestamp": "2025-06-20 08:00:00",
       "fuel_level": 70.0,
       "fuel_consumption": 45.0,
-      "fuel_rate": 14.0
-    },
-    {
-      "timestamp": "2025-06-20 09:30:00",
-      "fuel_level": 66.0,
-      "fuel_consumption": 55.0,
-      "fuel_rate": 6.7
+      "fuel_rate": 12.9
     },
     {
       "timestamp": "2025-06-20 11:00:00",
-      "fuel_level": 60.0,
-      "fuel_consumption": 70.0,
-      "fuel_rate": 10.0
+      "fuel_level": 58.0,
+      "fuel_consumption": 72.0,
+      "fuel_rate": 9.0
     },
     {
       "timestamp": "2025-06-20 13:30:00",
       "fuel_level": 42.0,
       "fuel_consumption": 115.0,
-      "fuel_rate": 18.0
+      "fuel_rate": 17.2
     }
   ],
   "electric_records": [
@@ -248,23 +187,9 @@
       "current": 0.0
     },
     {
-      "timestamp": "2025-06-20 05:30:00",
-      "battery_level": 95.0,
-      "power_consumption": 2.0,
-      "voltage": 0.0,
-      "current": 0.0
-    },
-    {
       "timestamp": "2025-06-20 08:00:00",
       "battery_level": 70.0,
       "power_consumption": 15.0,
-      "voltage": 0.0,
-      "current": 0.0
-    },
-    {
-      "timestamp": "2025-06-20 09:30:00",
-      "battery_level": 75.0,
-      "power_consumption": 16.0,
       "voltage": 0.0,
       "current": 0.0
     },
@@ -286,31 +211,16 @@
   "cold_mode_records": [
     {
       "timestamp": "2025-06-20 04:00:00",
-      "mode": "electric",
-      "set_point": -18.0
-    },
-    {
-      "timestamp": "2025-06-20 05:30:00",
       "mode": "diesel",
       "set_point": -18.0
     },
     {
-      "timestamp": "2025-06-20 08:00:00",
-      "mode": "diesel",
-      "set_point": -18.0
-    },
-    {
-      "timestamp": "2025-06-20 09:30:00",
-      "mode": "diesel",
-      "set_point": -18.0
-    },
-    {
-      "timestamp": "2025-06-20 10:00:00",
+      "timestamp": "2025-06-20 08:30:00",
       "mode": "electric",
       "set_point": -22.0
     },
     {
-      "timestamp": "2025-06-20 11:00:00",
+      "timestamp": "2025-06-20 10:00:00",
       "mode": "diesel",
       "set_point": -18.0
     }
@@ -329,10 +239,6 @@
       "status": "off"
     },
     {
-      "timestamp": "2025-06-20 09:30:00",
-      "status": "on"
-    },
-    {
       "timestamp": "2025-06-20 11:00:00",
       "status": "on"
     },
@@ -342,16 +248,6 @@
     }
   ],
   "charge_records": [
-    {
-      "timestamp": "2025-06-20 04:00:00",
-      "status": "plugged",
-      "charge_power": 0.0
-    },
-    {
-      "timestamp": "2025-06-20 05:30:00",
-      "status": "unplugged",
-      "charge_power": 0.0
-    },
     {
       "timestamp": "2025-06-20 08:00:00",
       "status": "plugged",

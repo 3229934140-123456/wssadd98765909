@@ -1,0 +1,40 @@
+{
+  "trip_id": "trip_A2",
+  "vehicle": {"plate": "京A12345", "fleet": "北京一队", "driver": "张师傅"},
+  "date": "2025-06-20",
+  "route": "北京-石家庄",
+  "segments": [
+    {"start_time": "2025-06-20 14:00:00", "end_time": "2025-06-20 15:00:00", "start_location": "北京冷库", "end_location": "北京冷库", "phase": "loading", "distance": 0},
+    {"start_time": "2025-06-20 15:00:00", "end_time": "2025-06-20 18:00:00", "start_location": "北京冷库", "end_location": "石家庄配送中心", "phase": "transport", "distance": 280},
+    {"start_time": "2025-06-20 18:00:00", "end_time": "2025-06-20 19:00:00", "start_location": "石家庄配送中心", "end_location": "石家庄配送中心", "phase": "waiting", "distance": 0}
+  ],
+  "temperature_records": [
+    {"timestamp": "2025-06-20 14:00:00", "compartment": "主厢", "temperature": -18.0, "target_temperature": -18.0},
+    {"timestamp": "2025-06-20 15:00:00", "compartment": "主厢", "temperature": -18.1, "target_temperature": -18.0},
+    {"timestamp": "2025-06-20 16:00:00", "compartment": "主厢", "temperature": -18.0, "target_temperature": -18.0},
+    {"timestamp": "2025-06-20 17:00:00", "compartment": "主厢", "temperature": -17.9, "target_temperature": -18.0},
+    {"timestamp": "2025-06-20 18:00:00", "compartment": "主厢", "temperature": -18.2, "target_temperature": -18.0},
+    {"timestamp": "2025-06-20 19:00:00", "compartment": "主厢", "temperature": -18.0, "target_temperature": -18.0}
+  ],
+  "fuel_records": [
+    {"timestamp": "2025-06-20 14:00:00", "fuel_level": 70.0, "fuel_consumption": 0.0, "fuel_rate": 0.0},
+    {"timestamp": "2025-06-20 18:00:00", "fuel_level": 48.0, "fuel_consumption": 55.0, "fuel_rate": 13.8},
+    {"timestamp": "2025-06-20 19:00:00", "fuel_level": 45.0, "fuel_consumption": 62.0, "fuel_rate": 7.0}
+  ],
+  "electric_records": [
+    {"timestamp": "2025-06-20 14:00:00", "battery_level": 95.0, "power_consumption": 0.0, "voltage": 0.0, "current": 0.0},
+    {"timestamp": "2025-06-20 18:00:00", "battery_level": 40.0, "power_consumption": 28.0, "voltage": 0.0, "current": 0.0},
+    {"timestamp": "2025-06-20 19:00:00", "battery_level": 42.0, "power_consumption": 30.0, "voltage": 0.0, "current": 0.0}
+  ],
+  "cold_mode_records": [
+    {"timestamp": "2025-06-20 14:00:00", "mode": "diesel", "set_point": -18.0},
+    {"timestamp": "2025-06-20 18:00:00", "mode": "diesel", "set_point": -18.0}
+  ],
+  "ignition_records": [
+    {"timestamp": "2025-06-20 14:00:00", "status": "on"},
+    {"timestamp": "2025-06-20 18:00:00", "status": "off"}
+  ],
+  "charge_records": [
+    {"timestamp": "2025-06-20 18:00:00", "status": "plugged", "charge_power": 6.0}
+  ]
+}
