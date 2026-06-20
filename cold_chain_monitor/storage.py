@@ -95,16 +95,34 @@ class DataStorage:
             writer.writerow([])
 
             writer.writerow(["三、路线汇总"])
-            writer.writerow(["路线", "车次", "总里程(km)", "平均油耗(L/100km)", "节油潜力(L)", "温控风险数"])
+            writer.writerow(["路线", "涉及车辆", "车次", "总里程(km)", "总油耗(L)", "平均油耗(L/100km)", "节油潜力(L)", "温控风险数", "异常总数"])
             for route, data in report.route_summary.items():
+                plates = ",".join(data.get("plates", []))
                 writer.writerow([
                     route,
+                    plates,
                     data.get("trip_count", 0),
                     data.get("total_distance", 0),
+                    data.get("total_fuel", 0),
                     data.get("avg_fuel_per_100km", 0),
                     data.get("fuel_saving", 0),
-                    data.get("risk_count", 0)
+                    data.get("risk_count", 0),
+                    data.get("anomaly_count", 0)
                 ])
+            writer.writerow([])
+
+            writer.writerow(["三(附)、各路线异常明细"])
+            writer.writerow(["路线", "异常类型", "车牌", "路段", "风险评分", "节油潜力(L)"])
+            for route, data in report.route_summary.items():
+                for anomaly_detail in data.get("anomaly_details", []):
+                    writer.writerow([
+                        route,
+                        anomaly_detail.get("type", ""),
+                        anomaly_detail.get("plate", ""),
+                        anomaly_detail.get("segment", ""),
+                        anomaly_detail.get("risk_score", 0),
+                        anomaly_detail.get("fuel_saving", 0)
+                    ])
             writer.writerow([])
 
             writer.writerow(["四、异常详情"])

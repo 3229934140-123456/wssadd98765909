@@ -124,27 +124,57 @@ class ReportGenerator:
             "total_fuel": 0.0,
             "fuel_saving": 0.0,
             "risk_count": 0,
-            "plates": set()
+            "plates": set(),
+            "anomaly_details": []
         })
 
+        plate_to_route = {}
+        route_to_trips = defaultdict(list)
         for trip in trips:
             route = trip.route
+            plate = trip.vehicle.plate
+            plate_to_route[plate] = route
+            route_to_trips[route].append(trip)
             route_data[route]["trip_count"] += 1
             route_data[route]["total_distance"] += trip.total_distance
             route_data[route]["total_fuel"] += trip.total_fuel_consumption
-            route_data[route]["plates"].add(trip.vehicle.plate)
+            route_data[route]["plates"].add(plate)
 
-        trip_routes = {trip.trip_id: trip.route for trip in trips}
         for anomaly in anomalies:
-            if anomaly.segment:
-                for trip_id, route in trip_routes.items():
-                    if any(s.get("start_location") == anomaly.segment.start_location and
-                           s.get("end_location") == anomaly.segment.end_location
-                           for s in self._get_trip_segments(trip_id)):
-                        route_data[route]["fuel_saving"] += anomaly.fuel_saving_potential
-                        if anomaly.risk_score >= 8:
-                            route_data[route]["risk_count"] += 1
+            route = None
+
+            if anomaly.vehicle:
+                plate = anomaly.vehicle.plate
+                if plate in plate_to_route:
+                    route = plate_to_route[plate]
+
+            if route is None and anomaly.segment:
+                for trip in trips:
+                    for seg in trip.segments:
+                        if (seg.start_location == anomaly.segment.start_location and
+                            seg.end_location == anomaly.segment.end_location):
+                            route = trip.route
+                            break
+                    if route:
                         break
+
+            if route is None and anomaly.vehicle:
+                for trip in trips:
+                    if trip.vehicle.plate == anomaly.vehicle.plate:
+                        route = trip.route
+                        break
+
+            if route:
+                route_data[route]["fuel_saving"] += anomaly.fuel_saving_potential
+                if anomaly.risk_score >= 8:
+                    route_data[route]["risk_count"] += 1
+                route_data[route]["anomaly_details"].append({
+                    "type": anomaly.anomaly_type,
+                    "plate": anomaly.vehicle.plate if anomaly.vehicle else "未知",
+                    "segment": f"{anomaly.segment.start_location}→{anomaly.segment.end_location}" if anomaly.segment else "未知",
+                    "risk_score": anomaly.risk_score,
+                    "fuel_saving": anomaly.fuel_saving_potential
+                })
 
         result = {}
         for route, data in route_data.items():
@@ -159,16 +189,13 @@ class ReportGenerator:
                 "total_fuel": round(data["total_fuel"], 2),
                 "avg_fuel_per_100km": round(avg_fuel_per_100km, 2),
                 "fuel_saving": round(data["fuel_saving"], 2),
-                "risk_count": data["risk_count"]
+                "risk_count": data["risk_count"],
+                "plates": list(data["plates"]),
+                "anomaly_count": len(data["anomaly_details"]),
+                "anomaly_details": data["anomaly_details"]
             }
 
         return result
-
-    def _get_trip_segments(self, trip_id: str) -> List:
-        trip_data = self.storage.load_trip(trip_id)
-        if not trip_data:
-            return []
-        return [seg for seg in trip_data.get("segments", [])]
 
     def format_report_console(self, report: DailyReport) -> str:
         output = []
